@@ -93,7 +93,6 @@ strong { color: var(--text); font-weight: 500; }
   max-width: var(--wrap);
   margin: 0 auto;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .section-label {
@@ -430,7 +429,6 @@ strong { color: var(--text); font-weight: 500; }
   overflow: hidden;
   background: var(--bg-stage);
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 #parallax-bg {
