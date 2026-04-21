@@ -227,42 +227,35 @@ strong { color: var(--text); font-weight: 500; }
 
 .story-panel .cta-button { pointer-events: auto; }
 
-/* ── left hero panel (Panels 0, 4) ── */
-/* Safe zone: left 50% — molar sits in the right half of the viewport */
-.panel-center {
+/* Panel positioning — all center-aligned */
+.panel-center,
+.panel-bottom-left,
+.panel-bottom-right,
+.panel-bottom-center {
   position: absolute;
   top: 0; bottom: 0; left: 0;
-  width: 52%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   text-align: left;
+}
+
+/* ── hero panel (Panels 0, 4) ── */
+.panel-center {
+  width: 52%;
   padding: 2rem 2rem 2rem clamp(2rem, 7vw, 7rem);
 }
 
-/* ── bottom-left panel (Panel 1) ── */
-.panel-bottom-left {
-  position: absolute;
-  bottom: 14vh;
-  left: clamp(1.5rem, 7vw, 7rem);
-  max-width: clamp(260px, 38vw, 480px);
-}
-
-/* ── bottom-left panel (Panel 2 — moved off the molar) ── */
-.panel-bottom-right {
-  position: absolute;
-  bottom: 22vh;
-  left: clamp(1.5rem, 7vw, 7rem);
-  max-width: clamp(260px, 38vw, 460px);
-  text-align: left;
-}
-
-/* ── bottom-left stats (Panel 3) ── */
+/* ── content panels (Panel 1, 2, 3) ── */
+.panel-bottom-left,
+.panel-bottom-right,
 .panel-bottom-center {
-  position: absolute;
-  bottom: 10vh;
-  left: clamp(1.5rem, 7vw, 7rem);
+  width: 52%;
+  padding: 2rem 2rem 2rem clamp(2rem, 7vw, 7rem);
+}
+
+.panel-bottom-center {
   width: 50%;
   max-width: 560px;
 }
