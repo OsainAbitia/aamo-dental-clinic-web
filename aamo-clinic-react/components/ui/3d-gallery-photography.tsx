@@ -217,13 +217,7 @@ function GalleryScene({
 	);
 
 	const textures = useTexture(
-		normalizedImages.map((img) => img.src),
-		(loaded) => {
-			// Preload textures
-		},
-		(error) => {
-			console.warn('Failed to load texture:', error);
-		}
+		normalizedImages.map((img) => img.src)
 	);
 
 	// Create materials pool
@@ -473,10 +467,14 @@ function GalleryScene({
 
 				const worldZ = plane.z - depthRange / 2;
 
-				// Calculate scale to maintain aspect ratio
-				const aspect = texture.image
-					? texture.image.width / texture.image.height
-					: 1;
+					// Calculate scale to maintain aspect ratio
+				let aspect = 1;
+				if (texture?.image) {
+					const img = texture.image as any;
+					if (img.width && img.height) {
+						aspect = img.width / img.height;
+					}
+				}
 				const scale: [number, number, number] =
 					aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
 
