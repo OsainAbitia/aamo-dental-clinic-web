@@ -1,39 +1,8 @@
 import InfiniteGallery from '@/components/ui/3d-gallery-photography';
+import { placeholderImages } from '@/lib/placeholder-images';
 
-const galleryImages = [
-	{
-		src: 'https://images.unsplash.com/photo-1606468881031-ff0fcbe4b1d9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Orthodontic Care',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1609525437162-a0e0e4e02660?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Smile Transformation',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1516739901601-2e1b62dc0c45?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Modern Clinic',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1631217314831-c6227db76b6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Patient Comfort',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1579154204601-01d82e5e6f85?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Treatment Success',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1591017403286-e2002da9b278?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Advanced Technology',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1638372066069-8da40b8d7ebd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Before & After Results',
-	},
-	{
-		src: 'https://images.unsplash.com/photo-1580627944550-decfe1e60107?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-		alt: 'Expert Team',
-	},
-];
+// Use placeholder images with proper CORS support
+const galleryImages = placeholderImages;
 
 export default function Home() {
 	return (

@@ -216,7 +216,15 @@ function GalleryScene({
 		[images]
 	);
 
-	const textures = useTexture(normalizedImages.map((img) => img.src));
+	const textures = useTexture(
+		normalizedImages.map((img) => img.src),
+		(loaded) => {
+			// Preload textures
+		},
+		(error) => {
+			console.warn('Failed to load texture:', error);
+		}
+	);
 
 	// Create materials pool
 	const materials = useMemo(
