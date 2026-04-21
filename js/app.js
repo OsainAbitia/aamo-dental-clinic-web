@@ -54,6 +54,72 @@ document.querySelectorAll('.faq-toggle').forEach((toggle) => {
   });
 });
 
+// ─── 3D Gallery carousel ──────────────────────────────────────────────────────
+class Gallery3D {
+  constructor(containerId) {
+    this.carousel = document.getElementById(containerId);
+    this.items = this.carousel.querySelectorAll('.gallery-item');
+    this.prevBtn = document.getElementById('galleryPrev');
+    this.nextBtn = document.getElementById('galleryNext');
+    this.indicatorsContainer = document.getElementById('galleryIndicators');
+    this.currentIndex = 0;
+
+    this.init();
+  }
+
+  init() {
+    // Create indicators
+    this.items.forEach((item, idx) => {
+      const indicator = document.createElement('button');
+      indicator.className = `gallery-indicator ${idx === 0 ? 'active' : ''}`;
+      indicator.setAttribute('aria-label', `Image ${idx + 1}`);
+      indicator.addEventListener('click', () => this.goToSlide(idx));
+      this.indicatorsContainer.appendChild(indicator);
+    });
+
+    // Add event listeners
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+
+    // Set first item as active
+    this.items[0].classList.add('active');
+  }
+
+  goToSlide(index) {
+    this.currentIndex = index;
+    this.updateCarousel();
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+    this.updateCarousel();
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.items.length;
+    this.updateCarousel();
+  }
+
+  updateCarousel() {
+    // Update items
+    this.items.forEach((item, idx) => {
+      item.classList.toggle('active', idx === this.currentIndex);
+    });
+
+    // Update indicators
+    document.querySelectorAll('.gallery-indicator').forEach((indicator, idx) => {
+      indicator.classList.toggle('active', idx === this.currentIndex);
+    });
+  }
+}
+
+// Initialize gallery when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('galleryCarousel')) {
+    new Gallery3D('galleryCarousel');
+  }
+});
+
 // ─── Smooth anchor links via Lenis ───────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (e) => {
