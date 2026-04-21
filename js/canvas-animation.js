@@ -1,107 +1,85 @@
+const TOTAL_FRAMES = 60;
+
 class MolarCanvasAnimation {
   constructor() {
     this.canvas = document.getElementById('molarCanvas');
     this.ctx = this.canvas.getContext('2d');
     this.frames = [];
-    this.frameCount = 0;
-    this.currentFrameIndex = 0;
-    this.isLoading = true;
-    this.heroSection = document.getElementById('hero');
+    this.loaded = false;
 
     this.resizeCanvas();
-    window.addEventListener('resize', () => this.resizeCanvas());
+    window.addEventListener('resize', () => this.resizeCanvas(), { passive: true });
   }
 
   resizeCanvas() {
-    const rect = this.heroSection.getBoundingClientRect();
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
+    if (this.loaded && this.frames[0]) this.drawFrame(0);
   }
 
-  async loadFrames() {
-    try {
-      // Dynamically detect frame count by checking which frames exist
-      const testFrame = new Image();
-      let frameCount = 0;
-
-      for (let i = 1; i <= 1000; i++) {
-        const framePath = `/frames/frame_${String(i).padStart(4, '0')}.webp`;
-        const img = new Image();
-
-        img.onload = () => {
-          this.frames[i - 1] = img;
-          frameCount = i;
-        };
-
-        img.onerror = () => {
-          if (frameCount > 0) {
-            this.frameCount = frameCount;
-            this.isLoading = false;
-            this.drawFrame(0);
-            return;
-          }
-        };
-
-        img.src = framePath;
-
-        if (i > 200) break; // Safety limit
-      }
-
-      // Fallback: if no frames load after short wait, mark as loaded
-      setTimeout(() => {
-        if (this.isLoading && this.frames.length > 0) {
-          this.frameCount = this.frames.length;
-          this.isLoading = false;
-          this.drawFrame(0);
-        }
-      }, 2000);
-    } catch (error) {
-      console.error('Error loading frames:', error);
-      this.isLoading = false;
+  loadFrames() {
+    const promises = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const path = `frames/frame_${String(i).padStart(4, '0')}.jpg`;
+      promises.push(
+        new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve({ index: i - 1, img });
+          img.onerror = () => reject(new Error(`Failed to load ${path}`));
+          img.src = path;
+        })
+      );
     }
+
+    Promise.all(promises)
+      .then((results) => {
+        results.forEach(({ index, img }) => { this.frames[index] = img; });
+        this.loaded = true;
+        this.drawFrame(0);
+        console.log(`Molar animation ready — ${TOTAL_FRAMES} frames loaded`);
+      })
+      .catch((err) => console.error('Frame load error:', err));
   }
 
-  drawFrame(frameIndex) {
-    if (frameIndex < 0 || frameIndex >= this.frames.length) return;
-    if (!this.frames[frameIndex]) return;
+  drawFrame(index) {
+    const img = this.frames[index];
+    if (!img) return;
 
-    const img = this.frames[frameIndex];
+    const cw = this.canvas.width;
+    const ch = this.canvas.height;
+    const ir = img.naturalWidth / img.naturalHeight;
+    const cr = cw / ch;
 
-    // Clear canvas
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // Calculate dimensions to fit image on canvas (maintain aspect ratio)
-    const canvasRatio = this.canvas.width / this.canvas.height;
-    const imgRatio = img.width / img.height;
-
-    let drawWidth, drawHeight, offsetX, offsetY;
-
-    if (imgRatio > canvasRatio) {
-      // Image is wider
-      drawWidth = this.canvas.width;
-      drawHeight = this.canvas.width / imgRatio;
-      offsetX = 0;
-      offsetY = (this.canvas.height - drawHeight) / 2;
+    // "contain" sizing, scaled to 80%
+    let dw, dh;
+    if (ir > cr) {
+      dw = cw * 0.8;
+      dh = (cw / ir) * 0.8;
     } else {
-      // Image is taller
-      drawHeight = this.canvas.height;
-      drawWidth = this.canvas.height * imgRatio;
-      offsetX = (this.canvas.width - drawWidth) / 2;
-      offsetY = 0;
+      dh = ch * 0.8;
+      dw = ch * ir * 0.8;
     }
 
-    this.ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    // Right-aligned, vertically centered
+    const dx = cw - dw;
+    const dy = (ch - dh) / 2;
+
+    this.ctx.clearRect(0, 0, cw, ch);
+    this.ctx.drawImage(img, dx, dy, dw, dh);
   }
 
-  updateFrameOnScroll(scrollProgress) {
-    if (this.isLoading || this.frameCount === 0) return;
+  updateFrameOnScroll(progress) {
+    if (!this.loaded || this.frames.length === 0) return;
+    // Apply easing to frame progression for smoother visual transitions
+    const easedProgress = this.easeOutCubic(progress);
+    const exactIndex = easedProgress * (this.frames.length - 1);
+    const index = Math.round(exactIndex);
+    this.drawFrame(Math.max(0, Math.min(index, this.frames.length - 1)));
+  }
 
-    // scrollProgress is 0-1 based on hero section scroll position
-    const frameIndex = Math.round(scrollProgress * (this.frames.length - 1));
-    this.currentFrameIndex = Math.max(0, Math.min(frameIndex, this.frames.length - 1));
-    this.drawFrame(this.currentFrameIndex);
+  easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
   }
 }
 
-// Export for use in app.js
 window.MolarCanvasAnimation = MolarCanvasAnimation;

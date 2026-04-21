@@ -1,79 +1,74 @@
-// Initialize Lenis smooth scroll
+// ─── Nav scroll state ────────────────────────────────────────────────────────
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ─── Lenis smooth scroll ─────────────────────────────────────────────────────
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 0.9,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  direction: 'vertical',
-  gestureDirection: 'vertical',
-  smooth: true,
-  mouseMultiplier: 1,
   smoothTouch: false,
-  touchMultiplier: 2,
-  infinite: false,
+  syncTouch: false,
 });
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+// Drive Lenis through GSAP ticker so both share one RAF loop
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
 
-requestAnimationFrame(raf);
+// Keep ScrollTrigger in sync with Lenis scroll position
+lenis.on('scroll', () => ScrollTrigger.update());
 
-// Initialize canvas animation
-const molarCanvasAnimation = new MolarCanvasAnimation();
+// Ensure ScrollTrigger reads correct positions after Lenis init
+ScrollTrigger.refresh();
 
-// Load frames on page load
+// ─── Canvas animation ────────────────────────────────────────────────────────
+window.molarCanvasAnimation = new MolarCanvasAnimation();
+
 window.addEventListener('load', () => {
-  molarCanvasAnimation.loadFrames();
+  window.molarCanvasAnimation.loadFrames();
 });
 
-// Bind canvas frame to scroll position within hero section
-let lastProgress = 0;
-
-lenis.on('scroll', (e) => {
-  const heroSection = document.getElementById('hero');
-  const heroRect = heroSection.getBoundingClientRect();
-
-  // Calculate scroll progress of hero section (0 = top of viewport, 1 = bottom of viewport)
-  const heroTop = heroRect.top;
-  const heroHeight = heroRect.height;
-
-  // Scroll progress: 0 when hero is fully visible below, 1 when hero is above viewport
-  let progress = (window.innerHeight - heroTop) / (window.innerHeight + heroHeight);
-  progress = Math.max(0, Math.min(1, progress));
-
-  // Only update if progress changed significantly (debounce)
-  if (Math.abs(progress - lastProgress) > 0.01) {
-    molarCanvasAnimation.updateFrameOnScroll(progress);
-    lastProgress = progress;
-  }
-
-  // Update ScrollTrigger (for GSAP animations)
-  ScrollTrigger.update();
-});
-
-// Initialize scroll animations
+// ─── All scroll-driven animations ────────────────────────────────────────────
 initScrollAnimations();
 
-// FAQ TOGGLE functionality
-const faqToggles = document.querySelectorAll('.faq-toggle');
-faqToggles.forEach((toggle) => {
+// ─── FAQ accordion ───────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-toggle').forEach((toggle) => {
   toggle.addEventListener('click', () => {
     const answer = toggle.nextElementSibling;
-    toggle.classList.toggle('active');
-    answer.classList.toggle('active');
+    const isOpen = toggle.classList.contains('active');
+
+    // Close all open items first
+    document.querySelectorAll('.faq-toggle.active').forEach((t) => {
+      t.classList.remove('active');
+      t.setAttribute('aria-expanded', 'false');
+      t.nextElementSibling.classList.remove('active');
+    });
+
+    // Open clicked item if it was closed
+    if (!isOpen) {
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+      answer.classList.add('active');
+    }
   });
 });
 
-// Smooth scroll helper function for CTA buttons
-function scrollToContact() {
-  const contactSection = document.getElementById('contact');
-  lenis.scrollTo(contactSection);
-}
+// ─── Smooth anchor links via Lenis ───────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target); }
+  });
+});
 
-// Export helper function
+// ─── CTA smooth scroll ───────────────────────────────────────────────────────
+function scrollToContact() {
+  lenis.scrollTo(document.getElementById('contact'));
+}
 window.scrollToContact = scrollToContact;
 
-// Handle contact form submission
+// ─── Contact form ─────────────────────────────────────────────────────────────
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -83,4 +78,4 @@ if (contactForm) {
   });
 }
 
-console.log('✓ SmileCare Orthodontics landing page initialized');
+console.log('✓ AAMO Ortho Dental Clinic initialized');
