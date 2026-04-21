@@ -1,4 +1,5 @@
 import InfiniteGallery from '@/components/ui/3d-gallery-photography';
+import ScrollFrameAnimation from '@/components/ui/scroll-frame-animation';
 import { placeholderImages } from '@/lib/placeholder-images';
 
 // Use placeholder images with proper CORS support
@@ -7,6 +8,13 @@ const galleryImages = placeholderImages;
 export default function Home() {
 	return (
 		<div className="w-full bg-[#F7F8F0]">
+			{/* Scroll-driven molar animation */}
+			<ScrollFrameAnimation
+				className="fixed inset-0 pointer-events-none z-10"
+				scalePercent={80}
+				alignment="right"
+				verticalAlignment="center"
+			/>
 			{/* Navigation */}
 			<nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[rgba(53,88,114,0.1)]">
 				<div className="max-w-[1160px] mx-auto px-8 py-4 flex items-center justify-between">
