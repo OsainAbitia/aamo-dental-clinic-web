@@ -5,8 +5,8 @@ const PANEL_RANGES = [
   [-0.12, 0.22],  // Panel 0: Hero intro  — negative start keeps it fully visible at progress=0
   [0.20,  0.44],  // Panel 1: 20+ years
   [0.40,  0.64],  // Panel 2: Technology
-  [0.60,  0.82],  // Panel 3: Stats
-  [0.70,  1.00],  // Panel 4: Final CTA — extended earlier start for longer full opacity
+  [0.60,  0.84],  // Panel 3: Stats — with new description section
+  [0.82,  1.00],  // Panel 4: Final CTA — delayed start to prevent overlap
 ];
 
 const FADE_ZONE = 0.15; // fraction of panel duration used for fade-in / fade-out

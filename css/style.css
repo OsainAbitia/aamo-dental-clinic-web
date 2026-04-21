@@ -36,10 +36,6 @@
 
 /* scroll-behavior managed by Lenis — do not add smooth here */
 
-html {
-  scroll-snap-type: y proximity;
-}
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -92,7 +88,6 @@ strong { color: var(--text); font-weight: 500; }
   padding: var(--pad) 2rem;
   max-width: var(--wrap);
   margin: 0 auto;
-  scroll-snap-align: start;
 }
 
 .section-label {
@@ -314,7 +309,6 @@ strong { color: var(--text); font-weight: 500; }
   margin-bottom: 2rem;
   max-width: 480px;
 }
-.panel-center .panel-body { margin-left: auto; margin-right: auto; }
 
 /* Large stat number (Panel 1) */
 .panel-big-number {
@@ -428,7 +422,6 @@ strong { color: var(--text); font-weight: 500; }
   justify-content: center;
   overflow: hidden;
   background: var(--bg-stage);
-  scroll-snap-align: start;
 }
 
 #parallax-bg {
