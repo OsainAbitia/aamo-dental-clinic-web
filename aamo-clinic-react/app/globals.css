@@ -572,6 +572,12 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   flex-shrink: 0;
 }
 
+.testimonial-avatar-img {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .testimonial-card .name {
   font-size: 0.88rem;
   font-weight: 500;
@@ -823,6 +829,12 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   gap: 1.1rem;
 }
 
+.faq {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
 .form-group {
   position: relative;
 }
@@ -1010,6 +1022,7 @@ footer {
   }
   .nav-links {
     gap: 1rem;
+    font-size: 0.9rem;
   }
   .services-grid, .testimonials-grid {
     grid-template-columns: 1fr;
@@ -1026,6 +1039,46 @@ footer {
     height: 1px;
     opacity: 0;
   }
+  #molarCanvas {
+    display: none;
+  }
+  #scroll-stage {
+    height: auto;
+  }
+  #canvas-wrapper {
+    position: relative;
+    height: auto;
+    min-height: 400px;
+  }
+  .story-panel {
+    position: relative;
+    pointer-events: auto;
+    display: flex;
+    margin-bottom: 2rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .nav {
+    padding: 1rem 1.5rem;
+  }
+  .nav-inner {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .nav-logo {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .nav-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .nav-links li {
+    padding: 0.5rem 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1041,6 +1094,24 @@ footer {
   }
   .gallery-viewport {
     height: 320px;
+  }
+  .nav {
+    padding: 0.75rem 1rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+  .nav-cta {
+    padding: 0.4rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+  .logo-text {
+    font-size: 1rem;
   }
   .contact-detail {
     flex-direction: column;

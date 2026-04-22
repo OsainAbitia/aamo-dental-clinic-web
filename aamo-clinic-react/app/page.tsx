@@ -3,18 +3,28 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import InfiniteGallery from '@/components/ui/3d-gallery-photography';
+import { ZoomParallax } from '@/components/ui/zoom-parallax';
 import { ScrollStage } from '@/components/ui/scroll-stage';
+import { TestimonialsSection } from '@/components/ui/testimonials-section';
 import { useGSAP } from '@gsap/react';
-import { placeholderImages } from '@/lib/placeholder-images';
+import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const galleryImages = placeholderImages;
 
 export default function Home() {
   const navRef = useRef<HTMLElement>(null);
   const [navScrolled, setNavScrolled] = useState(false);
+
+  // Initialize Lenis for smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
 
   // Nav scroll state
   useEffect(() => {
@@ -69,7 +79,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: '.services-grid',
         start: 'top 80%',
-        toggleActions: 'play none none reverse',
+        toggleActions: 'play none none none',
       },
       opacity: 0,
       y: 50,
@@ -77,18 +87,6 @@ export default function Home() {
       stagger: 0.1,
     });
 
-    // Testimonial cards
-    gsap.from('.testimonial-card', {
-      scrollTrigger: {
-        trigger: '.testimonials-grid',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.7,
-      stagger: 0.12,
-    });
 
     // About sections
     gsap.from('.about-left', {
@@ -276,36 +274,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="testimonials content-section">
-        <div className="section-label">Patient Stories</div>
-        <h2>What Our <em>Patients Say</em></h2>
-        <div className="testimonials-grid">
-          <div className="testimonial-card">
-            <div className="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p className="quote">"Dr. Alvarez transformed my smile in just 18 months. The team is exceptional — every visit felt personal and professional."</p>
-            <div className="testimonial-footer">
-              <div className="testimonial-avatar" aria-hidden="true">AJ</div>
-              <p className="name">Alex Johnson</p>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p className="quote">"The staff is incredibly friendly and professional. Best orthodontist I have ever visited — results beyond expectations."</p>
-            <div className="testimonial-footer">
-              <div className="testimonial-avatar" aria-hidden="true">MG</div>
-              <p className="name">Maria Garcia</p>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p className="quote">"Clear aligners were a game-changer. Invisible, effective, and the whole process was smoother than I ever imagined."</p>
-            <div className="testimonial-footer">
-              <div className="testimonial-avatar" aria-hidden="true">JL</div>
-              <p className="name">Jordan Lee</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* About Section */}
       <section id="about" className="about content-section">
@@ -347,31 +316,45 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="gallery content-section">
-        <div className="section-label">Visual Showcase</div>
-        <h2>Before & <em>After</em> Gallery</h2>
-        <p className="gallery-intro">See the transformation that our advanced orthodontic techniques can achieve for your smile.</p>
-
-        <div className="gallery-container">
-          <div className="gallery-viewport">
-            <InfiniteGallery
-              images={galleryImages}
-              speed={1.0}
-              zSpacing={3}
-              visibleCount={10}
-              className="w-full h-full"
-              fadeSettings={{
-                fadeIn: { start: 0.05, end: 0.25 },
-                fadeOut: { start: 0.75, end: 0.95 },
-              }}
-              blurSettings={{
-                blurIn: { start: 0.0, end: 0.1 },
-                blurOut: { start: 0.9, end: 1.0 },
-                maxBlur: 6.0,
-              }}
-            />
-          </div>
+      <section id="gallery" className="gallery">
+        <div style={{ padding: 'var(--pad) 2rem', maxWidth: '1160px', margin: '0 auto' }}>
+          <div className="section-label">Visual Showcase</div>
+          <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 300, color: 'var(--primary)', marginBottom: '2.5rem', lineHeight: 1.2 }}>Before & <em style={{ color: 'var(--secondary)', fontStyle: 'normal' }}>After</em> Gallery</h2>
+          <p className="gallery-intro">See the transformation that our advanced orthodontic techniques can achieve for your smile.</p>
         </div>
+
+        <ZoomParallax
+          images={[
+            {
+              src: 'https://images.pexels.com/photos/6627574/pexels-photo-6627574.jpeg',
+              alt: 'After orthodontic treatment',
+            },
+            {
+              src: 'https://images.pexels.com/photos/28407748/pexels-photo-28407748.jpeg',
+              alt: 'Teeth guards for better results',
+            },
+            {
+              src: 'https://images.pexels.com/photos/6528909/pexels-photo-6528909.jpeg',
+              alt: 'Placing traditional braces',
+            },
+            {
+              src: 'https://images.pexels.com/photos/6528867/pexels-photo-6528867.jpeg',
+              alt: 'After braces treatment results',
+            },
+            {
+              src: 'https://images.pexels.com/photos/21134543/pexels-photo-21134543.jpeg',
+              alt: 'Bringing hapiness for our clients',
+            },
+            {
+              src: 'https://images.pexels.com/photos/6627716/pexels-photo-6627716.jpeg',
+              alt: 'Dentist professional tools',
+            },
+            {
+              src: 'https://images.pexels.com/photos/6529112/pexels-photo-6529112.jpeg',
+              alt: 'Explanation of treatments',
+            },
+          ]}
+        />
       </section>
 
       {/* Contact Section */}
