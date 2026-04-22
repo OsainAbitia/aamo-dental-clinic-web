@@ -1,20 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ZoomParallax } from '@/components/ui/zoom-parallax';
 import { ScrollStage } from '@/components/ui/scroll-stage';
 import { TestimonialsSection } from '@/components/ui/testimonials-section';
+import { Header } from '@/components/ui/header';
 import { useGSAP } from '@gsap/react';
 import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const navRef = useRef<HTMLElement>(null);
-  const [navScrolled, setNavScrolled] = useState(false);
-
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
@@ -24,15 +22,6 @@ export default function Home() {
     }
     requestAnimationFrame(raf);
     return () => lenis.destroy();
-  }, []);
-
-  // Nav scroll state
-  useEffect(() => {
-    const handleNavScroll = () => {
-      setNavScrolled(window.scrollY > 60);
-    };
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleNavScroll);
   }, []);
 
   // Smooth scroll to element
@@ -193,30 +182,7 @@ export default function Home() {
   return (
     <div className="w-full" style={{ background: 'var(--bg)' }}>
       {/* Navigation */}
-      <nav
-        ref={navRef}
-        className={`nav ${navScrolled ? 'scrolled' : ''}`}
-      >
-        <div className="nav-inner">
-          <div className="nav-logo">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <circle cx="10" cy="10" r="8" stroke="#7AAACE" strokeWidth="1.5" />
-              <circle cx="10" cy="10" r="3" fill="#7AAACE" />
-            </svg>
-            <span className="logo-text">AAMO</span>
-          </div>
-          <ul className="nav-links">
-            <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToElement('services'); }}>Services</a></li>
-            <li><a href="#testimonials" onClick={(e) => { e.preventDefault(); scrollToElement('testimonials'); }}>Stories</a></li>
-            <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToElement('about'); }}>About</a></li>
-            <li>
-              <a href="#contact" className="nav-cta" onClick={(e) => { e.preventDefault(); scrollToElement('contact'); }}>
-                Book Free Consult
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Header onNavClick={scrollToElement} />
 
       {/* Scroll Stage with Molar Animation & Story Panels */}
       <ScrollStage onCTAClick={() => scrollToElement('contact')} />
