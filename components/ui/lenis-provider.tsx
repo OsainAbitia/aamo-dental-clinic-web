@@ -15,10 +15,9 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
-    // Add Lenis to GSAP ticker loop
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    // Add Lenis to GSAP ticker loop — store reference for cleanup
+    const rafCallback = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(rafCallback);
 
     gsap.ticker.lagSmoothing(0);
 
@@ -30,10 +29,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     ScrollTrigger.refresh();
 
     return () => {
+      gsap.ticker.remove(rafCallback);
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
     };
   }, []);
 

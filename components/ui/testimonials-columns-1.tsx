@@ -22,12 +22,12 @@ export const TestimonialsColumn = (props: {
         className="flex flex-col gap-6 pb-6"
       >
         {[
-          ...new Array(2).fill(0).map((_, index) => (
-            <React.Fragment key={index}>
+          ...new Array(2).fill(0).map((_, pass) => (
+            <React.Fragment key={pass}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
                 <div
                   className="testimonial-card max-w-xs w-full"
-                  key={i}
+                  key={`${pass}-${i}`}
                 >
                   <p className="quote mb-4">"{text}"</p>
                   <div className="testimonial-footer">

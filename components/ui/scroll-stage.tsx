@@ -139,7 +139,7 @@ export function ScrollStage({ onCTAClick }: ScrollStageProps) {
     gsap.set('.story-panel', { opacity: 0, y: 30 });
     gsap.set('#panel-0', { opacity: 1, y: 0 });
 
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: scrollStageRef.current,
       start: 'top top',
       end: 'bottom bottom',
@@ -156,7 +156,7 @@ export function ScrollStage({ onCTAClick }: ScrollStageProps) {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      trigger.kill();
     };
   }, { dependencies: [framesLoaded] });
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ZoomParallax } from '@/components/ui/zoom-parallax';
@@ -8,21 +8,10 @@ import { ScrollStage } from '@/components/ui/scroll-stage';
 import { TestimonialsSection } from '@/components/ui/testimonials-section';
 import { Header } from '@/components/ui/header';
 import { useGSAP } from '@gsap/react';
-import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  // Initialize Lenis for smooth scrolling
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
-  }, []);
 
   // Smooth scroll to element
   const scrollToElement = (id: string) => {
@@ -34,6 +23,7 @@ export default function Home() {
 
   // FAQ accordion state
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Set up GSAP animations for section entrances
   useGSAP(() => {
@@ -162,7 +152,7 @@ export default function Home() {
       y: 40,
       duration: 0.8,
     });
-  });
+  }, {});
 
   const faqItems = [
     {
@@ -285,7 +275,7 @@ export default function Home() {
       <section id="gallery" className="gallery">
         <div style={{ padding: 'var(--pad) 2rem', maxWidth: '1160px', margin: '0 auto' }}>
           <div className="section-label">Visual Showcase</div>
-          <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 300, color: 'var(--primary)', marginBottom: '2.5rem', lineHeight: 1.2 }}>Before & <em style={{ color: 'var(--secondary)', fontStyle: 'normal' }}>After</em> Gallery</h2>
+          <h2 className="gallery-heading">Before & <em style={{ color: 'var(--secondary)', fontStyle: 'normal' }}>After</em> Gallery</h2>
           <p className="gallery-intro">See the transformation that our advanced orthodontic techniques can achieve for your smile.</p>
         </div>
 
@@ -370,7 +360,15 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Thank you for reaching out!'); (e.target as HTMLFormElement).reset(); }}>
+          <form
+            className="contact-form"
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+              e.preventDefault();
+              e.currentTarget.reset();
+              setFormSubmitted(true);
+              setTimeout(() => setFormSubmitted(false), 4000);
+            }}
+          >
             <div className="form-group">
               <input type="text" id="name" placeholder=" " required />
               <label htmlFor="name">Your Name</label>
@@ -383,7 +381,9 @@ export default function Home() {
               <textarea id="message" placeholder=" " rows={4} required></textarea>
               <label htmlFor="message">Message</label>
             </div>
-            <button type="submit" className="cta-button">Send Message →</button>
+            <button type="submit" className="cta-button">
+              {formSubmitted ? 'Message Sent ✓' : 'Send Message →'}
+            </button>
           </form>
         </div>
 
@@ -391,10 +391,11 @@ export default function Home() {
         <div className="faq">
           <h3>Frequently Asked <em>Questions</em></h3>
           {faqItems.map((item, i) => (
-            <div key={i} className="faq-item">
+            <div key={item.question} className="faq-item">
               <button
                 className={`faq-toggle ${openFAQ === i ? 'active' : ''}`}
                 aria-expanded={openFAQ === i}
+                aria-label={`Toggle answer: ${item.question}`}
                 onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
               >
                 {item.question}
