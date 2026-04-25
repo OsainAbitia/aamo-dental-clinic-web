@@ -9,9 +9,9 @@ interface HeaderProps {
 }
 
 const links = [
-  { label: 'Services', id: 'services' },
-  { label: 'Stories', id: 'testimonials' },
-  { label: 'About', id: 'about' },
+  { label: 'Servicios', id: 'services' },
+  { label: 'Testimonios', id: 'testimonials' },
+  { label: 'Nosotros', id: 'about' },
 ];
 
 export function Header({ onNavClick }: HeaderProps) {
@@ -116,7 +116,7 @@ export function Header({ onNavClick }: HeaderProps) {
                 marginLeft: '1rem',
               }}
             >
-              Book Free Consult
+              Agendar Consulta
             </button>
           </div>
 
@@ -170,7 +170,7 @@ export function Header({ onNavClick }: HeaderProps) {
                 className="w-full rounded-full font-semibold text-[0.95rem] border-0 cursor-pointer transition-colors duration-200"
                 style={{ background: 'var(--secondary)', color: 'var(--text-on-dark)', padding: '0.75rem' }}
               >
-                Book Free Consultation →
+                Agendar Consulta →
               </button>
             </div>
           </div>

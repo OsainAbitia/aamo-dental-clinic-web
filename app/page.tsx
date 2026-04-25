@@ -156,16 +156,16 @@ export default function Home() {
 
   const faqItems = [
     {
-      question: 'How long does treatment take?',
-      answer: 'Most treatments take 18–24 months, though some cases resolve faster with clear aligners. Dr. Alvarez will provide a personalised timeline estimate during your consultation.',
+      question: '¿Cuánto tiempo dura el tratamiento?',
+      answer: 'La mayoría de los tratamientos duran entre 18 y 24 meses, aunque algunos casos se resuelven más rápido con alineadores. La Dra. Alvarez te dará un estimado personalizado durante tu consulta.',
     },
     {
-      question: 'Do you offer payment plans?',
-      answer: 'Yes! We offer flexible payment options including 0% interest financing to make treatment affordable for everyone in our community.',
+      question: '¿Ofrecen planes de pago?',
+      answer: '¡Sí! Contamos con opciones de pago flexibles para que el tratamiento sea accesible para toda nuestra comunidad. Pregúntanos durante tu consulta.',
     },
     {
-      question: 'Is the first consultation free?',
-      answer: 'Absolutely. Schedule your complimentary consultation today to discuss your smile goals with Dr. Alvarez — no commitment required.',
+      question: '¿La primera consulta tiene costo?',
+      answer: 'Agenda tu consulta hoy y conoce tu plan de tratamiento con la Dra. Alvarez. Sin compromisos, solo el primer paso hacia tu mejor sonrisa.',
     },
   ];
 
@@ -181,50 +181,52 @@ export default function Home() {
       <section id="parallax-section">
         <div id="parallax-bg" aria-hidden="true"></div>
         <div className="parallax-content">
-          <blockquote>"Every smile tells a story.<br />Our job is to make sure yours<br />is a beautiful one."</blockquote>
-          <cite>— Dr. Olga Alvarez, DMD · AAMO Ortho Dental Clinic</cite>
+          <blockquote>"Cada sonrisa cuenta una historia.<br />Nuestro trabajo es asegurarnos<br />de que la tuya sea hermosa."</blockquote>
+          <cite>— Dra. Olga Alvarez, DMD · AAMO Ortho Dental Clinic</cite>
         </div>
       </section>
 
       {/* Services Section */}
       <section id="services" className="services content-section">
-        <div className="section-label">What We Offer</div>
-        <h2>Our <em>Services</em></h2>
+        <div className="section-label">Lo Que Ofrecemos</div>
+        <h2>Nuestros <em>Servicios</em></h2>
         <div className="services-grid">
           <div className="service-card">
             <svg className="card-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-              <path d="M8 12h8M12 8v8" />
+              <path d="M12 2C9 2 7 4 7 7c0 2 .5 3.5 1 5l1 5h6l1-5c.5-1.5 1-3 1-5 0-3-2-5-5-5z" />
+              <path d="M9 17v2a3 3 0 006 0v-2" />
             </svg>
-            <h3>Traditional Braces</h3>
-            <p>Proven effective treatment for all ages with customisable colors and the highest clinical precision.</p>
-            <span className="card-tag">Most Popular</span>
+            <h3>Odontología General</h3>
+            <p>Tu salud bucal es nuestra prioridad. Consultas, limpiezas, extracciones y tratamientos preventivos para mantener tu sonrisa en óptimas condiciones.</p>
+            <span className="card-tag">Esencial</span>
           </div>
           <div className="service-card">
             <svg className="card-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <circle cx="12" cy="12" r="3" />
+              <path d="M12 3C8 3 5 6 5 10c0 2.5 1.5 4.5 3 6l1 1h6l1-1c1.5-1.5 3-3.5 3-6 0-4-3-7-7-7z" />
+              <path d="M9 21h6M10 18h4" />
+              <path d="M12 3v2M7 5l1.5 1.5M17 5l-1.5 1.5" />
             </svg>
-            <h3>Clear Aligners</h3>
-            <p>Nearly invisible orthodontic correction at your pace, without metal brackets or wires.</p>
-            <span className="card-tag">Discreet</span>
+            <h3>Armonización Bucofacial</h3>
+            <p>Realzamos la belleza natural de tu rostro mediante procedimientos estéticos mínimamente invasivos que equilibran y armonizan tus rasgos faciales.</p>
+            <span className="card-tag">Estético</span>
           </div>
           <div className="service-card">
             <svg className="card-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-              <path d="M9 12l2 2 4-4" />
+              <path d="M12 2C9 2 7 4 7 7c0 2 .5 3.5 1 5l1 4h6l1-4c.5-1.5 1-3 1-5 0-3-2-5-5-5z" />
+              <path d="M10 13l2 6 2-6" />
+              <circle cx="12" cy="19" r="1" />
             </svg>
-            <h3>Retainers</h3>
-            <p>Maintain your perfect smile with custom-fitted retainers designed for long-term results.</p>
-            <span className="card-tag">Maintenance</span>
+            <h3>Endodoncia</h3>
+            <p>Salvamos tus dientes de forma segura y sin dolor. Nuestros tratamientos de conducto eliminan la infección preservando tu diente natural.</p>
+            <span className="card-tag">Especializado</span>
           </div>
           <div className="service-card">
             <svg className="card-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
             </svg>
-            <h3>Emergency Care</h3>
-            <p>Same-day support for orthodontic emergencies with rapid, compassionate response.</p>
-            <span className="card-tag">24 / 7</span>
+            <h3>Estética Dental</h3>
+            <p>Transforma tu sonrisa con blanqueamiento dental, carillas y más. Diseñamos la sonrisa que siempre soñaste con resultados naturales y duraderos.</p>
+            <span className="card-tag">Premium</span>
           </div>
         </div>
       </section>
@@ -236,36 +238,30 @@ export default function Home() {
       <section id="about" className="about content-section">
         <div className="about-inner">
           <div className="about-left">
-            <div className="section-label">Our Story</div>
-            <h2>About <em>AAMO</em></h2>
-            <p>AAMO Ortho Dental Clinic has been providing expert orthodontic care to our community for over 20 years. Dr. Olga Alvarez is passionate about creating beautiful, healthy smiles that last a lifetime.</p>
-            <p>We combine the latest clinical techniques with compassionate, patient-first care to deliver outcomes that consistently exceed expectations.</p>
+            <div className="section-label">Nuestra Historia</div>
+            <h2>Sobre <em>AAMO</em></h2>
+            <p>AAMO Ortho Dental Clinic lleva más de 30 años brindando atención odontológica especializada a nuestra comunidad. La Dra. Olga Alvarez se apasiona por crear sonrisas hermosas y saludables que duran toda la vida.</p>
+            <p>Combinamos las últimas técnicas clínicas con una atención cálida y centrada en el paciente para lograr resultados que superan consistentemente las expectativas.</p>
             <div className="about-credentials">
               <div className="credential">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="#7AAACE" aria-hidden="true">
                   <polygon points="5,0 6.2,3.8 10,3.8 6.9,6.2 8.1,10 5,7.6 1.9,10 3.1,6.2 0,3.8 3.8,3.8" />
                 </svg>
-                <span>DMD, Boston University School of Dental Medicine</span>
+                <span>Cirujano dentista con especialidad en ortodoncia, Universidad Juárez del Estado de Durango</span>
               </div>
               <div className="credential">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="#7AAACE" aria-hidden="true">
                   <polygon points="5,0 6.2,3.8 10,3.8 6.9,6.2 8.1,10 5,7.6 1.9,10 3.1,6.2 0,3.8 3.8,3.8" />
                 </svg>
-                <span>ABO Certified Orthodontist</span>
-              </div>
-              <div className="credential">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="#7AAACE" aria-hidden="true">
-                  <polygon points="5,0 6.2,3.8 10,3.8 6.9,6.2 8.1,10 5,7.6 1.9,10 3.1,6.2 0,3.8 3.8,3.8" />
-                </svg>
-                <span>20+ years of clinical experience</span>
+                <span>30+ años de experiencia clínica</span>
               </div>
             </div>
           </div>
           <div className="about-right">
             <div className="about-card-large">
               <div className="about-quote-mark" aria-hidden="true">"</div>
-              <p className="about-quote-text">Every smile tells a story. Our job is to make sure yours is a beautiful one.</p>
-              <p className="about-quote-attr">— Dr. Olga Alvarez, DMD</p>
+              <p className="about-quote-text">Cada sonrisa cuenta una historia. Nuestro trabajo es asegurarnos de que la tuya sea hermosa.</p>
+              <p className="about-quote-attr">— Dra. Olga Alvarez</p>
             </div>
           </div>
         </div>
@@ -274,40 +270,40 @@ export default function Home() {
       {/* Gallery Section */}
       <section id="gallery" className="gallery">
         <div style={{ padding: 'var(--pad) 2rem', maxWidth: '1160px', margin: '0 auto' }}>
-          <div className="section-label">Visual Showcase</div>
-          <h2 className="gallery-heading">Before & <em style={{ color: 'var(--secondary)', fontStyle: 'normal' }}>After</em> Gallery</h2>
-          <p className="gallery-intro">See the transformation that our advanced orthodontic techniques can achieve for your smile.</p>
+          <div className="section-label">Galería Visual</div>
+          <h2 className="gallery-heading">Galería de <em style={{ color: 'var(--secondary)', fontStyle: 'normal' }}>Resultados</em></h2>
+          <p className="gallery-intro">Descubre la transformación que nuestras técnicas odontológicas avanzadas pueden lograr en tu sonrisa.</p>
         </div>
 
         <ZoomParallax
           images={[
             {
               src: 'https://images.pexels.com/photos/6627574/pexels-photo-6627574.jpeg',
-              alt: 'After orthodontic treatment',
+              alt: 'Resultado después del tratamiento ortodóncico',
             },
             {
               src: 'https://images.pexels.com/photos/28407748/pexels-photo-28407748.jpeg',
-              alt: 'Teeth guards for better results',
+              alt: 'Protectores dentales para mejores resultados',
             },
             {
               src: 'https://images.pexels.com/photos/6528909/pexels-photo-6528909.jpeg',
-              alt: 'Placing traditional braces',
+              alt: 'Colocación de brackets tradicionales',
             },
             {
               src: 'https://images.pexels.com/photos/6528867/pexels-photo-6528867.jpeg',
-              alt: 'After braces treatment results',
+              alt: 'Resultados después del tratamiento con brackets',
             },
             {
               src: 'https://images.pexels.com/photos/21134543/pexels-photo-21134543.jpeg',
-              alt: 'Bringing hapiness for our clients',
+              alt: 'Sonrisas felices de nuestros pacientes',
             },
             {
               src: 'https://images.pexels.com/photos/6627716/pexels-photo-6627716.jpeg',
-              alt: 'Dentist professional tools',
+              alt: 'Herramientas profesionales del consultorio',
             },
             {
               src: 'https://images.pexels.com/photos/6529112/pexels-photo-6529112.jpeg',
-              alt: 'Explanation of treatments',
+              alt: 'Explicación de tratamientos al paciente',
             },
           ]}
         />
@@ -315,8 +311,8 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="contact content-section">
-        <div className="section-label">Get In Touch</div>
-        <h2>Book Your <em>Consultation</em></h2>
+        <div className="section-label">Contáctanos</div>
+        <h2>Agenda tu <em>Consulta</em></h2>
         <div className="contact-content">
           <div className="contact-info">
             <div className="contact-detail">
@@ -324,8 +320,8 @@ export default function Home() {
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.77a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z" />
               </svg>
               <div>
-                <p className="contact-label">Phone</p>
-                <p className="contact-value">(555) 123-4567</p>
+                <p className="contact-label">Teléfono</p>
+                <p className="contact-value">(618) 147 82 06</p>
               </div>
             </div>
             <div className="contact-detail">
@@ -334,8 +330,8 @@ export default function Home() {
                 <polyline points="22,6 12,13 2,6" />
               </svg>
               <div>
-                <p className="contact-label">Email</p>
-                <p className="contact-value">hello@aamo.clinic</p>
+                <p className="contact-label">Correo Electrónico</p>
+                <p className="contact-value">dra.olgalilia@gmail.com</p>
               </div>
             </div>
             <div className="contact-detail">
@@ -344,8 +340,8 @@ export default function Home() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
               <div>
-                <p className="contact-label">Location</p>
-                <p className="contact-value">123 Dental Drive, City, State 12345</p>
+                <p className="contact-label">Ubicación</p>
+                <p className="contact-value">Aquiles Serdán No. 108 zona centro, Durango, México</p>
               </div>
             </div>
             <div className="contact-detail">
@@ -354,42 +350,50 @@ export default function Home() {
                 <polyline points="12,6 12,12 16,14" />
               </svg>
               <div>
-                <p className="contact-label">Hours</p>
-                <p className="contact-value">Mon–Fri 8am–5pm · Sat 9am–1pm</p>
+                <p className="contact-label">Horario</p>
+                <p className="contact-value">Lun–Vie 8am–5pm · Sáb 9am–1pm</p>
               </div>
             </div>
           </div>
 
           <form
             className="contact-form"
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+            onSubmit={(e) => {
               e.preventDefault();
-              e.currentTarget.reset();
+              const form = e.currentTarget;
+              const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+              const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+              const text = `Hola, me gustaría agendar una consulta.\nMi nombre es ${name}.\n\n${message}`;
+              window.open(`https://wa.me/526181478206?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+              form.reset();
               setFormSubmitted(true);
               setTimeout(() => setFormSubmitted(false), 4000);
             }}
           >
             <div className="form-group">
               <input type="text" id="name" placeholder=" " required />
-              <label htmlFor="name">Your Name</label>
-            </div>
-            <div className="form-group">
-              <input type="email" id="email" placeholder=" " required />
-              <label htmlFor="email">Your Email</label>
+              <label htmlFor="name">Tu Nombre</label>
             </div>
             <div className="form-group">
               <textarea id="message" placeholder=" " rows={4} required></textarea>
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">Mensaje</label>
             </div>
             <button type="submit" className="cta-button">
-              {formSubmitted ? 'Message Sent ✓' : 'Send Message →'}
+              {formSubmitted ? 'Abriendo WhatsApp ✓' : (
+                <>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline', marginRight: '0.4rem', verticalAlign: 'middle' }} aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Escríbenos por WhatsApp
+                </>
+              )}
             </button>
           </form>
         </div>
 
         {/* FAQ */}
         <div className="faq">
-          <h3>Frequently Asked <em>Questions</em></h3>
+          <h3>Preguntas <em>Frecuentes</em></h3>
           {faqItems.map((item, i) => (
             <div key={item.question} className="faq-item">
               <button
@@ -418,8 +422,22 @@ export default function Home() {
             </svg>
             <span className="logo-text">AAMO</span>
           </div>
-          <p className="footer-tagline">Expert orthodontic care for a lifetime of beautiful smiles.</p>
-          <p className="footer-copy">&copy; 2026 AAMO Ortho Dental Clinic · Dr. Olga Alvarez. All rights reserved.</p>
+          <p className="footer-tagline">Atención odontológica experta para una vida de sonrisas hermosas.</p>
+          <a
+            href="https://www.facebook.com/draolgaliliaalvarez"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook de la Dra. Olga Alvarez"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#9CD5FF', textDecoration: 'none', fontSize: '0.85rem', margin: '0.5rem 0', opacity: 0.8, transition: 'opacity 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '0.8')}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+            </svg>
+            /draolgaliliaalvarez
+          </a>
+          <p className="footer-copy">&copy; 2026 AAMO Ortho Dental Clinic · Dra. Olga Alvarez. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>

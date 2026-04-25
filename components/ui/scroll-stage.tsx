@@ -188,65 +188,65 @@ export function ScrollStage({ onCTAClick }: ScrollStageProps) {
         <div className="stage-vignette" aria-hidden="true"></div>
 
         {/* Panel 0: Hero intro */}
-        <div className="story-panel" id="panel-0" ref={(el) => { if (el) panelRefsRef.current[0] = el; }} role="region" aria-label="Introduction">
+        <div className="story-panel" id="panel-0" ref={(el) => { if (el) panelRefsRef.current[0] = el; }} role="region" aria-label="Introducción">
           <div className={`panel-inner ${PANEL_CONFIG[0].position}`}>
-            <span className="panel-eyebrow">AAMO Ortho Dental Clinic — Dr. Olga Alvarez</span>
-            <h1 className="panel-headline">Crafting <em>Perfect</em><br />Smiles</h1>
-            <p className="panel-body">Advanced orthodontic care — where precision meets comfort</p>
-            <button className="cta-button" onClick={onCTAClick}>Book Free Consultation</button>
-            <span className="scroll-hint" aria-hidden="true">↓ scroll to discover</span>
+            <span className="panel-eyebrow">AAMO Ortho Dental Clinic — Dra. Olga Alvarez</span>
+            <h1 className="panel-headline">Creando <em>Sonrisas</em><br />Perfectas</h1>
+            <p className="panel-body">Ortodoncia avanzada — donde la precisión se une al confort</p>
+            <button className="cta-button" onClick={onCTAClick}>Agendar Consulta</button>
+            <span className="scroll-hint" aria-hidden="true">↓ desplázate para descubrir</span>
           </div>
         </div>
 
         {/* Panel 1: Experience */}
-        <div className="story-panel" id="panel-1" ref={(el) => { if (el) panelRefsRef.current[1] = el; }} role="region" aria-label="Experience">
+        <div className="story-panel" id="panel-1" ref={(el) => { if (el) panelRefsRef.current[1] = el; }} role="region" aria-label="Experiencia">
           <div className={`panel-inner ${PANEL_CONFIG[1].position}`}>
-            <div className="panel-big-number" aria-label="20 plus years">20+</div>
-            <div className="panel-big-label">Years of Expert Care</div>
-            <p className="panel-body">Trusted by our community since 2004, delivering life-changing smiles with precision and compassion.</p>
+            <div className="panel-big-number" aria-label="más de 30 años">30+</div>
+            <div className="panel-big-label">Años de Atención Experta</div>
+            <p className="panel-body">Confianza de nuestra comunidad desde 1996, transformando sonrisas con precisión y compasión.</p>
           </div>
         </div>
 
         {/* Panel 2: Technology */}
-        <div className="story-panel" id="panel-2" ref={(el) => { if (el) panelRefsRef.current[2] = el; }} role="region" aria-label="Technology">
+        <div className="story-panel" id="panel-2" ref={(el) => { if (el) panelRefsRef.current[2] = el; }} role="region" aria-label="Tecnología">
           <div className={`panel-inner ${PANEL_CONFIG[2].position}`}>
-            <span className="panel-eyebrow">Advanced Technology</span>
-            <h2 className="panel-headline-sm">Faster Results,<br /><em>Greater Comfort</em></h2>
-            <p className="panel-body">Cutting-edge techniques mean fewer visits and a smoother experience from start to finish.</p>
+            <span className="panel-eyebrow">Tecnología Avanzada</span>
+            <h2 className="panel-headline-sm">Resultados Más Rápidos,<br /><em>Mayor Comodidad</em></h2>
+            <p className="panel-body">Técnicas de vanguardia que significan menos visitas y una experiencia más fluida de principio a fin.</p>
           </div>
         </div>
 
         {/* Panel 3: Stats */}
-        <div className="story-panel" id="panel-3" ref={(el) => { if (el) panelRefsRef.current[3] = el; }} role="region" aria-label="Statistics">
+        <div className="story-panel" id="panel-3" ref={(el) => { if (el) panelRefsRef.current[3] = el; }} role="region" aria-label="Estadísticas">
           <div className={`panel-inner ${PANEL_CONFIG[3].position}`}>
-            <span className="panel-eyebrow">Our Track Record</span>
-            <h2 className="panel-headline-sm">Proven <em>Results</em></h2>
-            <p className="panel-body">Thousands of transformed smiles and a reputation built on trust, precision, and exceptional patient care.</p>
+            <span className="panel-eyebrow">Nuestros Resultados</span>
+            <h2 className="panel-headline-sm">Resultados <em>Comprobados</em></h2>
+            <p className="panel-body">Miles de sonrisas transformadas y una reputación construida sobre la confianza, la precisión y el cuidado excepcional.</p>
             <div className="panel-stats-row">
               <div className="panel-stat-item">
-                <span className="panel-stat-n">4,200+</span>
-                <span className="panel-stat-l">Smiles Transformed</span>
+                <span className="panel-stat-n">3,000+</span>
+                <span className="panel-stat-l">Sonrisas Transformadas</span>
               </div>
               <div className="panel-divider" aria-hidden="true"></div>
               <div className="panel-stat-item">
                 <span className="panel-stat-n">98%</span>
-                <span className="panel-stat-l">Patient Satisfaction</span>
+                <span className="panel-stat-l">Satisfacción del Paciente</span>
               </div>
               <div className="panel-divider" aria-hidden="true"></div>
               <div className="panel-stat-item">
                 <span className="panel-stat-n">4.9 ★</span>
-                <span className="panel-stat-l">Average Rating</span>
+                <span className="panel-stat-l">Calificación Promedio</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Panel 4: Final CTA */}
-        <div className="story-panel" id="panel-4" ref={(el) => { if (el) panelRefsRef.current[4] = el; }} role="region" aria-label="Call to action">
+        <div className="story-panel" id="panel-4" ref={(el) => { if (el) panelRefsRef.current[4] = el; }} role="region" aria-label="Llamada a la acción">
           <div className={`panel-inner ${PANEL_CONFIG[4].position}`}>
-            <h2 className="panel-headline-sm">Your <em>Perfect Smile</em><br />Starts Here</h2>
-            <p className="panel-body">Join thousands of patients who trusted AAMO Ortho Dental Clinic with their most important asset.</p>
-            <button className="cta-button" onClick={onCTAClick}>Schedule Free Consultation →</button>
+            <h2 className="panel-headline-sm">Tu <em>Sonrisa Perfecta</em><br />Comienza Aquí</h2>
+            <p className="panel-body">Únete a miles de pacientes que confiaron en AAMO Ortho Dental Clinic con su activo más importante.</p>
+            <button className="cta-button" onClick={onCTAClick}>Agendar Consulta →</button>
           </div>
         </div>
       </div>

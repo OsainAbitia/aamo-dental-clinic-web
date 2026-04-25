@@ -5,58 +5,58 @@ import { TestimonialsColumn } from "./testimonials-columns-1";
 
 const patientTestimonials = [
   {
-    text: "Dr. Alvarez transformed my smile in just 18 months. The team is exceptional — every visit felt personal and professional.",
+    text: "La Dra. Alvarez transformó mi sonrisa en menos de dos años. El equipo es excepcional — cada visita se sintió cercana y muy profesional.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    name: "Alex Johnson",
-    role: "Patient",
+    name: "Carlos M.",
+    role: "Paciente",
   },
   {
-    text: "The staff is incredibly friendly and professional. Best orthodontist I have ever visited — results beyond expectations.",
+    text: "El trato del personal es increíble. La mejor clínica dental que he visitado — los resultados superaron todas mis expectativas.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    name: "Maria Garcia",
-    role: "Patient",
+    name: "Sofía R.",
+    role: "Paciente",
   },
   {
-    text: "Clear aligners were a game-changer. Invisible, effective, and the whole process was smoother than I ever imagined.",
+    text: "Los alineadores invisibles cambiaron mi vida. Discretos, efectivos y el proceso fue mucho más sencillo de lo que imaginaba.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-    name: "Jordan Lee",
-    role: "Patient",
+    name: "Andrés P.",
+    role: "Paciente",
   },
   {
-    text: "I was nervous about getting braces as an adult, but Dr. Alvarez made me feel completely comfortable. Highly recommend!",
+    text: "Tenía miedo de ponerme brackets de adulta, pero la Dra. Alvarez me hizo sentir completamente tranquila desde el primer día. ¡Totalmente recomendada!",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-    name: "Sarah Martinez",
-    role: "Patient",
+    name: "Laura T.",
+    role: "Paciente",
   },
   {
-    text: "The payment plans made treatment affordable. No hidden fees, just transparent pricing and excellent care.",
+    text: "Los planes de pago hicieron el tratamiento muy accesible. Sin costos ocultos, precios claros y una atención de primera.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    name: "Michael Chen",
-    role: "Patient",
+    name: "Miguel F.",
+    role: "Paciente",
   },
   {
-    text: "Emergency care was quick and compassionate. When my wire broke, they fit me in same day. Amazing service!",
+    text: "Tuve una urgencia y me atendieron el mismo día. Rápidos, amables y muy eficientes. Un servicio que realmente te da tranquilidad.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    name: "Emma Wilson",
-    role: "Patient",
+    name: "Valeria G.",
+    role: "Paciente",
   },
   {
-    text: "The treatment plan was detailed and realistic. Dr. Alvarez explained everything so I knew exactly what to expect.",
+    text: "El plan de tratamiento fue detallado y realista. La Dra. Alvarez me explicó cada paso para que supiera exactamente qué esperar.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-    name: "David Rodriguez",
-    role: "Patient",
+    name: "Roberto S.",
+    role: "Paciente",
   },
   {
-    text: "My daughter's smile confidence increased immediately. The whole family is grateful for the care.",
+    text: "La confianza de mi hija creció de inmediato al ver su sonrisa. Toda la familia agradece el cuidado y la calidez de este equipo.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-    name: "Jennifer Park",
-    role: "Parent",
+    name: "Patricia N.",
+    role: "Mamá de paciente",
   },
   {
-    text: "Best investment in my smile. The results are stunning and the experience was top-notch throughout.",
+    text: "La mejor inversión que he hecho en mí misma. Los resultados son increíbles y la experiencia fue excelente de principio a fin.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    name: "Christopher Davis",
-    role: "Patient",
+    name: "Eduardo L.",
+    role: "Paciente",
   },
 ];
 
@@ -67,9 +67,9 @@ const thirdColumn = patientTestimonials.slice(6, 9);
 export const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="content-section">
-      <div className="section-label">Patient Stories</div>
+      <div className="section-label">Historias de Pacientes</div>
       <h2 style={{ color: "var(--primary)" }}>
-        What Our <em style={{ color: "var(--secondary)" }}>Patients Say</em>
+        Lo Que Dicen <em style={{ color: "var(--secondary)" }}>Nuestros Pacientes</em>
       </h2>
 
       <motion.div
