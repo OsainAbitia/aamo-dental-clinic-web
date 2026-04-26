@@ -184,7 +184,7 @@ export default function Home() {
 
   return (
     <div className="w-full" style={{ background: 'var(--bg)' }}>
-      {/* Scroll progress bar */}
+      {/* Scroll progress bar — desktop only */}
       <div
         id="scroll-progress-bar"
         aria-hidden="true"
@@ -200,6 +200,7 @@ export default function Home() {
           zIndex: 9999,
           opacity: 1,
         }}
+        className="hidden md:block"
       />
 
       {/* Navigation */}
