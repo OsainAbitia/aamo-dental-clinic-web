@@ -128,6 +128,19 @@ export default function Home() {
       stagger: 0.08,
     });
 
+    // Scroll progress bar
+    gsap.set('#scroll-progress-bar', { scaleX: 0 });
+    gsap.to('#scroll-progress-bar', {
+      scaleX: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+
     // Parallax background
     gsap.to('#parallax-bg', {
       scrollTrigger: {
@@ -171,6 +184,24 @@ export default function Home() {
 
   return (
     <div className="w-full" style={{ background: 'var(--bg)' }}>
+      {/* Scroll progress bar */}
+      <div
+        id="scroll-progress-bar"
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '6px',
+          background: '#9cd6ff',
+          transformOrigin: 'left center',
+          transform: 'scaleX(0)',
+          zIndex: 9999,
+          opacity: 1,
+        }}
+      />
+
       {/* Navigation */}
       <Header onNavClick={scrollToElement} />
 
